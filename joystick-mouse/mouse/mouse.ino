@@ -70,6 +70,7 @@ void loop()
 {
     bool state = !digitalRead(CLICK); // The button is active low.
 
+    // Start of the input stage of the IPO model.
     // If the button is pressed, update the last pressed time.
     if (state != lastState)
     {
@@ -93,7 +94,7 @@ void loop()
         rightClick = true;
     }
 
-    // Send the data to the host. The protocol is described in detail above in lines 11-18.
+    // Send the data to the host. The protocol is described in detail above in lines 11-18. This is the processing stage of the IPO model.
     char out[64];               // Create a character buffer to store the output.
     sprintf(                    // Format the output.
         out,                    // Write the output to the buffer.
@@ -118,7 +119,7 @@ void loop()
         analogRead(SENSITIVITY), // The sensitivity of the joystick.
         digitalRead(UP),         // The scroll up button.
         !digitalRead(DOWN));     // The scroll down button.
-    Serial.println(out);         // Send the output to the host.
+    Serial.println(out);         // Send the output to the host. This is the output stage of the IPO model.
 
     lastState = state;           // Update the last state.
     lastRightClick = rightClick; // Update the last right click state.
