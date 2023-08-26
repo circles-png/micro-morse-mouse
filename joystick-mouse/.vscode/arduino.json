@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "port": "/dev/tty.usbmodem101",
+    "sketch": "mouse/mouse.ino"
+}
